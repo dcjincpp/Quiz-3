@@ -53,7 +53,7 @@ PtrToEmployee searchEmployeeByPhone(PtrToConstEmployee ptr, int tableSize, char 
 
     { 
 
-        if(strcmp(ptr->name,targetPhone) == 0) //string compare
+        if(strcmp(ptr->phone,targetPhone) == 0) //string compare
 
             return (PtrToEmployee) ptr; 
 
@@ -67,7 +67,7 @@ PtrToEmployee searchEmployeeByPhone(PtrToConstEmployee ptr, int tableSize, char 
 
 
 //Search employee by salary
-PtrToEmployee searchEmployeeByNumber(PtrToConstEmployee ptr, int tableSize, long targetSalary){ 
+PtrToEmployee searchEmployeeBySalary(PtrToConstEmployee ptr, int tableSize, long targetSalary){ 
 
     const PtrToConstEmployee endPtr = ptr + tableSize; 
 
@@ -75,7 +75,7 @@ PtrToEmployee searchEmployeeByNumber(PtrToConstEmployee ptr, int tableSize, long
 
     { 
 
-        if(ptr->number == targetSalary)
+        if(ptr->salary == targetSalary)
 
             return (PtrToEmployee) ptr;
 
