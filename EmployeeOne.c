@@ -67,7 +67,7 @@ PtrToEmployee searchEmployeeByPhone(PtrToConstEmployee ptr, int tableSize, char 
 
 
 //Search employee by salary
-PtrToEmployee searchEmployeeBySalary(PtrToConstEmployee ptr, int tableSize, long targetSalary){ 
+PtrToEmployee searchEmployeeBySalary(PtrToConstEmployee ptr, int tableSize, double targetSalary){ 
 
     const PtrToConstEmployee endPtr = ptr + tableSize; 
 
