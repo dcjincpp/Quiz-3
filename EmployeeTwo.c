@@ -65,7 +65,13 @@ static int compareEmployeePhone(const void *targetPtr, PtrToConstEmployee tableV
 } 
 
 
- 
+ static int compareEmployeeSalary(const void *targetPtr, PtrToConstEmployee tableValuePtr) //static function means only usable in this file and not any other file
+
+{ 
+
+    return * (double *) targetPtr != tableValuePtr->salary; //const void *targetPtr ==> typecast as int pointer then dereference 
+
+} 
 
  
 
@@ -95,3 +101,9 @@ PtrToEmployee searchEmployeeByPhone(PtrToConstEmployee ptr, int size, char* phon
     return searchEmployeeTable(ptr, size, phone, compareEmployeePhone);
 }
 
+PtrToEmployee searchEmployeeBySalary(PtrToConstEmployee ptr, int size, double salary) 
+
+{ 
+
+    return searchEmployeeTable(ptr, size, &salary, compareEmployeeSalary);
+}
