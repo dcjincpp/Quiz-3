@@ -4,9 +4,9 @@
 
 void checkMagicSquare(int square[3][3])
 {
-    bool unique = false;
-    bool range = false;
-    int a, b, c;
+    bool unique;
+    bool range;
+    int a, b, c, x, y;
     int row1 = 0;
     int row2 = 0;
     int row3 = 0;
@@ -20,10 +20,29 @@ void checkMagicSquare(int square[3][3])
     {
         for(c = 0; c < 3; c++)
         {
+            int comparison = square[b][c];
+            for(x = 0; x < 3; x++)
+            {
+                for(y = 0; y < 3; y++)
+                {
+                    if(square[x][y] == comparison)
+                    {
+                        printf("There is more than 1 element of %d\n", comparison);
+                    }
+                }
+            }
+        }
+    }
+
+    for(b = 0; b < 3; b++)
+    {
+        for(c = 0; c < 3; c++)
+        {
             if((square[b][c] > 0) && (square[b][c] < 10))
             {
                 range = true;
             } else {
+                range = false;
                 printf("%d is not between 1 and 9\n", square[b][c]);
             }
         }
@@ -55,7 +74,7 @@ void checkMagicSquare(int square[3][3])
 
 int main()
 {
-    int test[3][3] = {{4, 9, 2}, {3, 5, 7}, {8, 1, 6}};
+    int test[3][3] = {{4, 9, 3}, {3, 5, 7}, {8, 1, 6}};
 
     checkMagicSquare(test);
 
