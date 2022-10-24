@@ -44,7 +44,7 @@ int main( int argc, char *argv[])
 
     total = subTotal + tax * subTotal + tip * subTotal;
 
-    printf("Tax: %lf%% Tip: %lf%%\n", taxInput, tipInput);
-    printf("Subtotal: %lf\n", subTotal);
-    printf("Total: %lf", total);
+    printf("Tax: %.2lf%% Tip: %.2lf%%\n", taxInput, tipInput);
+    printf("Subtotal: $%.2lf\n", subTotal);
+    printf("Total: $%.2lf", total);
 }
