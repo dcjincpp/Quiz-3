@@ -2,17 +2,18 @@
 #include <stdlib.h> 
 #include <time.h>
 #include <stdbool.h>
+#include <string.h>
 
 int main()
 {
     time_t t;
     srand((unsigned) time(&t));
+    int option;
     int max = 10;
-    int guess;
-    bool correct = false;
+    char guess[3];
+    int value;
     bool quit = false;
 
-    int option;
 
     while(!quit)
     {
@@ -21,27 +22,38 @@ int main()
         printf("Press 2 to change the max number\n");
         printf("Press 3 to quit\n");
 
-
         scanf("%d", &option);
 
         switch (option)
         {
-            case 1:
+            case 1 :
+                bool correct = false;
                 printf("You can enter q to quit anytime\n");
                 printf("Enter a number or press q to quit: ");
-                while(!correct && (scanf("%d", &guess) == 1))
-                    if (guess < number)
+                while(!correct)
+                {
+                    scanf("%s", guess);
+
+                    if (strcmp(guess, "q") == 0)
                     {
-                        printf("Your guess is too low. Try again\n");
-                    } else if (guess > number) {
-                        printf("Your guess is too high. Try again\n");
-                    } else if (guess == number) {
-                        printf("You won!\n");
-                        correct = true;
+                        printf("Quit\n");
+                        break;
+                    } else {
+                        value = atoi(guess);
+                        if (value < number)
+                        {
+                            printf("Your guess is too low. Try again\n");
+                        } else if (value > number) {
+                            printf("Your guess is too high. Try again\n");
+                        } else if (value == number) {
+                            printf("You won!\n");
+                            correct = true;
+                        }
                     }
+                }
                 break;
 
-            case 2:
+            case 2 :
                 printf("You can change the max value only up to 100 and can not lower than 1: ");
                 scanf("%d", &max);
                 while(max > 100 || max < 1)
@@ -60,7 +72,7 @@ int main()
                 }
                 break;
 
-            case 3:
+            case 3 :
                 quit = true;
                 break;
         }
