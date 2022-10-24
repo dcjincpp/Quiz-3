@@ -32,12 +32,9 @@ int main()
                 while(!correct && (scanf("%d", &guess) == 1))
                     if (guess < number)
                     {
-                    
                         printf("Your guess is too low. Try again\n");
-                        //scanf("%d", &guess);
                     } else if (guess > number) {
                         printf("Your guess is too high. Try again\n");
-                        //scanf("%d", &guess);
                     } else if (guess == number) {
                         printf("You won!\n");
                         correct = true;
