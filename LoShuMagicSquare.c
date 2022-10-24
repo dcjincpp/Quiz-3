@@ -62,10 +62,10 @@ void checkMagicSquare(int square[3][3])
 
         if ((row1 == row2) && (row3 == column1) && (column2 == column3) && (diagonal1 == diagonal2) && (row2 == row3) && (column1 == column2) && (column3 == diagonal1))
         {
-            printf("Is a magic square");
+            printf("Is a magic square\n");
             found = true;
         } else {
-            printf("Is not a magic square");
+            printf("Is not a magic square\n");
         }
     } else {
         printf("Numbers are not unique\n");
@@ -79,13 +79,13 @@ int main()
     int x,y;
     time_t t;
     srand((unsigned) time(&t));
-    int test[3][3] = {4,9,2,3,5,7,8,1,6};
-    checkMagicSquare(test);
+    //int test[3][3] = {4,9,2,3,5,7,8,1,6};
+    //checkMagicSquare(test);
+    int randomArray[3][3] = {0,0,0,0,0,0,0,0,0};
 
-/*    while(!found)
+    while(!found)
     {
         count++;
-        int randomArray[3][3];
         for (x = 0; x < 3; x++)
         {
             for(y = 0; y < 3; y++)
@@ -95,9 +95,10 @@ int main()
         }
 
         (checkMagicSquare(randomArray));
-    }*/
+    }
 
 
-    //printf("%d", count);
+    printf("%d", count);
+    printf("[%d %d %d]\n[%d %d %d]\n[%d %d %d]\n", randomArray[0][0], randomArray[0][1], randomArray[0][2], randomArray[1][0], randomArray[1][1], randomArray[1][2], randomArray[2][0], randomArray[2][1], randomArray[2][2]);
     return EXIT_SUCCESS;
 }
