@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
+#include <time.h>
 
 bool found = false;
 
@@ -17,19 +18,30 @@ void checkMagicSquare(int square[3][3])
     int diagonal1 = 0;
     int diagonal2 = 0;
     int same = 0;
+    int i = 0;
+    int arr[9];
 
     for(b = 0; b < 3; b++)
     {
         for(c = 0; c < 3; c++)
         {
-            if((square[b][c] == square[0][0]) || (square[b][c] == square[0][1]) || (square[b][c] == square[0][2]) || (square[b][c] == square[1][0]) || (square[b][c] == square[1][1]) || (square[b][c]== square[1][2]) || (square[b][c] == square[2][0]) || (square[b][c] == square[2][1]) || (square[b][c] == square[2][2]))
+            arr[i] = square[b][c];
+            i++;
+        }
+    }
+
+    for(i = 0; i < 9; i++)
+    {
+        for(int v = 0; v < 9; v++)
+        {
+            if(arr[i] == arr[v])
             {
                 same++;
             }
         }
     }
 
-    if(same >=2)
+    if(same >= 10)
     {
         unique = false;
     }
@@ -56,7 +68,7 @@ void checkMagicSquare(int square[3][3])
             printf("Is not a magic square");
         }
     } else {
-        printf("Numbers are not unique");
+        printf("Numbers are not unique\n");
     }
 
 }
@@ -67,8 +79,10 @@ int main()
     int x,y;
     time_t t;
     srand((unsigned) time(&t));
+    int test[3][3] = {4,9,2,3,5,7,8,1,6};
+    checkMagicSquare(test);
 
-    while(!found)
+/*    while(!found)
     {
         count++;
         int randomArray[3][3];
@@ -81,8 +95,9 @@ int main()
         }
 
         (checkMagicSquare(randomArray));
-    }
+    }*/
 
-    printf("%d", count);
+
+    //printf("%d", count);
     return EXIT_SUCCESS;
 }
