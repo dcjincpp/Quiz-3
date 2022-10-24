@@ -2,11 +2,12 @@
 #include <stdlib.h>
 #include <stdbool.h>
 
+bool found = false;
+
 void checkMagicSquare(int square[3][3])
 {
-    bool unique;
-    bool range;
     int a, b, c, x, y;
+    bool unique = true;
     int row1 = 0;
     int row2 = 0;
     int row3 = 0;
@@ -15,40 +16,25 @@ void checkMagicSquare(int square[3][3])
     int column3 = 0;
     int diagonal1 = 0;
     int diagonal2 = 0;
+    int same = 0;
 
     for(b = 0; b < 3; b++)
     {
         for(c = 0; c < 3; c++)
         {
-            int comparison = square[b][c];
-            for(x = 0; x < 3; x++)
+            if((square[b][c] == square[0][0]) || (square[b][c] == square[0][1]) || (square[b][c] == square[0][2]) || (square[b][c] == square[1][0]) || (square[b][c] == square[1][1]) || (square[b][c]== square[1][2]) || (square[b][c] == square[2][0]) || (square[b][c] == square[2][1]) || (square[b][c] == square[2][2]))
             {
-                for(y = 0; y < 3; y++)
-                {
-                    if(square[x][y] == comparison)
-                    {
-                        printf("There is more than 1 element of %d\n", comparison);
-                    }
-                }
+                same++;
             }
         }
     }
 
-    for(b = 0; b < 3; b++)
+    if(same >=2)
     {
-        for(c = 0; c < 3; c++)
-        {
-            if((square[b][c] > 0) && (square[b][c] < 10))
-            {
-                range = true;
-            } else {
-                range = false;
-                printf("%d is not between 1 and 9\n", square[b][c]);
-            }
-        }
+        unique = false;
     }
 
-    if(unique && range)
+    if (unique)
     {
         for(a = 0; a < 3; a++)
         {
@@ -65,18 +51,38 @@ void checkMagicSquare(int square[3][3])
         if ((row1 == row2) && (row3 == column1) && (column2 == column3) && (diagonal1 == diagonal2) && (row2 == row3) && (column1 == column2) && (column3 == diagonal1))
         {
             printf("Is a magic square");
+            found = true;
         } else {
             printf("Is not a magic square");
         }
+    } else {
+        printf("Numbers are not unique");
     }
 
 }
 
 int main()
 {
-    int test[3][3] = {{4, 9, 3}, {3, 5, 7}, {8, 1, 6}};
+    int count = 0;
+    int x,y;
+    time_t t;
+    srand((unsigned) time(&t));
 
-    checkMagicSquare(test);
+    while(!found)
+    {
+        count++;
+        int randomArray[3][3];
+        for (x = 0; x < 3; x++)
+        {
+            for(y = 0; y < 3; y++)
+            {
+                randomArray[x][y] = (rand() % 9) + 1;
+            }
+        }
 
+        (checkMagicSquare(randomArray));
+    }
+
+    printf("%d", count);
     return EXIT_SUCCESS;
 }
