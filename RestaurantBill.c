@@ -2,13 +2,17 @@
 #include <stdlib.h> 
 #include <time.h> 
 
-int main( int argc, double argv[])
+int main( int argc, char *argv[])
 {
     time_t i;
     srand((unsigned) time(&i)); 
     
-    double tax = argv[0] / 100;
-    double tip = argv[1] / 100;
+    double taxInput, tipInput;
+    sscanf(argv[1], "%lf", &taxInput);
+    sscanf(argv[2], "%lf", &tipInput);
+
+    double tax = taxInput / 100;
+    double tip = tipInput / 100;
     double subTotal;
     double total;
     double salad = 9.95;
@@ -37,6 +41,8 @@ int main( int argc, double argv[])
 
         default: break;
     }
+
+    total = subTotal + tax * subTotal + tip * subTotal;
 
     printf("Tax: %lf Tip: %lf\n", tax, tip);
     printf("Subtotal: %lf\n", subTotal);
