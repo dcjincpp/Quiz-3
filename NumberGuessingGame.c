@@ -25,16 +25,15 @@ int main()
         case 1:
             printf("You can enter q to quit anytime\n");
             printf("Enter a number: ");
-            scanf("%d", &guess);
-            while(!correct)
+            while(!correct && (scanf("%d", &guess) == 1))
                 if (guess < number)
                 {
                     
                     printf("Your guess is too low. Try again\n");
-                    scanf("%d", &guess);
+                    //scanf("%d", &guess);
                 } else if (guess > number) {
                     printf("Your guess is too high. Try again\n");
-                    scanf("%d", &guess);
+                    //scanf("%d", &guess);
                 } else if (guess == number) {
                     printf("You won!");
                     correct = true;
