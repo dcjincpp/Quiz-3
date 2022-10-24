@@ -14,7 +14,7 @@ int main()
 
     int option;
 
-    //while(!quit)
+    while(!quit)
     int number = ((rand() % max) + 1);
     printf("Press 1 to play a game\n");
     printf("Press 2 to change the max number\n");
@@ -62,6 +62,9 @@ int main()
             }
             break;
 
+        case 3:
+            quit = true;
+            break;
     }
     return EXIT_SUCCESS;
 }
